@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg base11 navbar-text-color" style="padding:2px;">
+    <img src="{% static 'jobkarle-logo1.JPG' %}" width="200" height="40" alt="My image"> <strong class="navbar-brand "></strong>
+         
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#uiNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="uiNavbar">
+              <ul class="navbar-nav " style="float: right">
+
+                  <li class="nav-item">
+                    <a  href="{% url 'bucketadmin:Logout' %}"class="nav-link">
+                        LOGOUT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a  href="{% url 'bucketadmin:Json_Data' %}"class="nav-link">
+                      Json Data</a>
+                  </li>
+                
+                 
+              </ul>
+              
+          </div>
+    </nav>
+  {% if obj %}
+  <h2 class=" m-auto p-2" style="text-align: center; width:max-content; color:greenyellow;">succesfully posted</h2>
+  {% endif %}
+<h3 class="m-auto p-2" style="text-align: center; width:max-content; color:blueviolet;">Post Content</h3>
+<div class=" col-sm-4 m-auto p-2 card">
+<form action="{% url 'bucketadmin:Posting' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{user_context.id}}">
+    {{form}}
+    <input type="submit" value="Post">
+  </form>
+  
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+  <datalist id="id_country_list"></datalist>
+</body>
+</html>
